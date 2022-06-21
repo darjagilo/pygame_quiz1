@@ -10,7 +10,7 @@ from label import *
 pygame.init()
 pygame.mixer.init()
 hit = pygame.mixer.Sound("sounds/hit.wav")
-screen = pygame.display.set_mode((600, 400))
+screen = pygame.display.set_mode((1300, 780))
 clock = pygame.time.Clock()
 
 buttons = pygame.sprite.Group()
@@ -89,8 +89,8 @@ class Button(pygame.sprite.Sprite):
     def draw_button2(self):
         ''' a linear border '''
         # the width is set to 500 to have the same size not depending on the text size
-        pygame.draw.rect(screen, self.bg, (self.x - 50, self.y, 500 , self.h))
-        pygame.gfxdraw.rectangle(screen, (self.x - 50, self.y, 500 , self.h), self.borderc)
+        pygame.draw.rect(screen, self.bg, (self.x - 50, self.y, 1300 , self.h))
+        pygame.gfxdraw.rectangle(screen, (self.x - 50, self.y, 1300 , self.h), self.borderc)
 
     def check_collision(self):
         if self.rect.collidepoint(pygame.mouse.get_pos()):
@@ -164,12 +164,51 @@ def check_score(answered="wrong"):
     time.sleep(.5)
 
 
-
+# questions = [
+#     ["What is Italy's Capital?", ["Rome", "Paris", "Tokyo", "Madrid"]],
+#     ["What is France's Capital?", ["Paris", "Rome", "Tokyo", "Madrid"]],
+#     ["What is England's Capital?", ["London", "Rome", "Tokyo", "Madrid"]],
+# ]
 
 questions = [
-    ["What is Italy's Capital?", ["Rome", "Paris", "Tokyo", "Madrid"]],
-    ["What is France's Capital?", ["Paris", "Rome", "Tokyo", "Madrid"]],
-    ["What is England's Capital?", ["London", "Rome", "Tokyo", "Madrid"]],
+    ["What is meant by the term 'data quality'?", ["The quality of the data, which is characterized by accuracy, precision, level of error, and bias.",
+    "The generality present in the source data",  
+    "The resolution of the data.", 
+    "The lineage of the data"]],
+    ["What is meant by the term 'accuracy' in data quality?", ["The level of detail at which data is stored.", 
+    "The overall quality of the data.", 
+    "Lack of bias in the data.", 
+    "The correctness of the output of the dataset."]],
+    ["At what point does data quality always start?", ["At the source, with correct input which good data requirements are followed by testing from source to end of chain", 
+    "When transferring the data from application databases to the BI (Business Intelligence) application",
+    "When testing, after the user enters the wrong input.",
+    "When converting data to new requirements."]],
+    ["Preserving the quality of data becomes increasingly important over time, which trend(s) are currently taking place that contribute to this?", 
+    ["All answers apply.",
+    "Big data, data is collected and linked from more angles.",
+    "The increasing regulation in various industries.",
+    "Testing a BI solution is gaining more and more attention in many organizations and 'BI testers' are in high demand.",]],
+    ["Tools to use to clean up data include these tasks except:", ["Prune", 
+    "Extract",
+    "Transform", 
+    "Load"]],
+    ["Data must be ... to have high quality:", [ "Unambiguous", "Incoherent",
+    "Complex", "Inaccessible"]],
+    ["When data is of high quality, then..:", ["It leads to insights that help the organization make better decisions.",
+    "It creates discord.",
+    "It limits opportunities.",
+    "It is complicated/impractical."]],
+    ["Which of the following could be the approaches to Artificial Intelligence?", ["All of the mentioned.", "Strong Artificial Intelligence",
+    "Weak Artificial Intelligence", "Applied Artificial Intelligence"]],
+    ["Which of the following task/tasks Artificial Intelligence could not do yet?", ["All of the mentioned", "Understand natural language robustly",
+    "Web mining", "Construction of plans in real time dynamic systems"]],
+    ["What is the field of Natural Language Processing (NLP)?", ["All of the mentioned", "Computer Science",
+    "Artificial Intelligence", "Linguistics"]],
+    ["What is the main challenge/s of NLP?", ["Handling Ambiguity of Sentences",
+    "Handling Tokenization", "Handling POS-Tagging", "All of the mentioned"]],
+    ["What is a finite set of rules that specifies a language?", [ "Grammar", "Signs",
+    "Communication", "Phrase"]]
+
 ]
 
 
