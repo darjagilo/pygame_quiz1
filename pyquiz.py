@@ -141,7 +141,7 @@ def forward():
     screen.fill(0)
     if qnum < len(questions):
         time.sleep(.3)
-        qnum += 1
+        qnum += 1   
         question(qnum)
 
 

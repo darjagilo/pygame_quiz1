@@ -15,7 +15,7 @@ labels = []
 class Label:
 
 	''' CLASS FOR TEXT LABELS ON THE WIN SCREEN SURFACE '''
-	def __init__(self, screen, text, x, y, size=20, color="white"):
+	def __init__(self, screen, text, x, y, size, color):
 		if size != 20:
 			self.font = fontsize(size)
 		else:
@@ -27,10 +27,10 @@ class Label:
 		self.text = text
 		labels.append(self)
 
-	def change_text(self, newtext, color="white"):
+	def change_text(self, newtext, color):
 		self.image = self.font.render(newtext, 1, color)
 
-	def change_font(self, font, size, color="white"):
+	def change_font(self, font, size, color):
 		self.font = pygame.font.SysFont(font, size)
 		self.change_text(self.text, color)
 
