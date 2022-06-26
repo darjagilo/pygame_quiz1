@@ -14,7 +14,6 @@ hit = pygame.mixer.Sound("sounds/hit.wav")
 grey = [255,250,240]
 colorbutton = "white on cornflowerblue"
 hovercolor = "blue on orange"
-# colorbutton2 = "black on cornflowerblue"
 screen = pygame.display.set_mode((1300, 780))
 clock = pygame.time.Clock()
 
@@ -175,21 +174,18 @@ def check_score(answered="wrong"):
         print(qnum, len(questions))
         if answered == "right":
             kill()
+            score.change_text("You reached a score of " + str(points), "green")
+            title.change_text("", color="black")
+            rightorwrong.change_text("", color="red")
             time.sleep(.1)
             points +=1
    
-       
+        kill()
         score.change_text("You reached a score of " + str(points), "green")
+        title.change_text("", color="black")
+        rightorwrong.change_text("", color="red")
 
     time.sleep(.5)
-    
-
-
-# questions = [
-#     ["What is Italy's Capital?", ["Rome", "Paris", "Tokyo", "Madrid"]],
-#     ["What is France's Capital?", ["Paris", "Rome", "Tokyo", "Madrid"]],
-#     ["What is England's Capital?", ["London", "Rome", "Tokyo", "Madrid"]],
-# ]
 
 questions = [
     ["What is meant by the term 'data quality'?", ["The quality of the data, which is characterized by accuracy, precision, level of error, and bias.",
@@ -275,16 +271,9 @@ def show_question(qnum):
         hover_colors=hovercolor, style="button2", borderc=(255,255,0),
         command=on_false)
 
-    
-
-    
-
-
 def kill():
     for _ in buttons:
-        _.kill()
-
-    
+        _.kill()    
 
 qnum = 1
 points = 0
@@ -308,15 +297,18 @@ def loop():
         for event in pygame.event.get(): # ====== quit / exit
             if (event.type == pygame.QUIT):
                 pygame.quit()
+                sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
+                    sys.exit()
         buttons.update() #                     update buttons
         buttons.draw(screen)
         show_labels()        #                 update labels
         clock.tick(60)
         pygame.display.update()
-    pygame.quit()
+        
+   
 
 if __name__ == '__main__':
     pygame.init()
